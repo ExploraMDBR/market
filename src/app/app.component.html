@@ -1,0 +1,76 @@
+<body (click)="input.focus()" class="corpo">
+<div class="testata"><img src="assets/img/mercato.png"></div>
+
+
+<input  class="immissione" autofocus type="text" (keyup)="onChangeProdotto()" [(ngModel)]="prodotto_selezionato" maxlength="13" [ngModelOptions]="{standalone: true}" #input  />
+
+
+<div class="schedaprodotto">
+  <div *ngIf="!paga_spesa; else pagaSpesa">
+
+   <div class="errore" *ngIf="codiceNonTrovato">
+      Codice non trovato!
+
+      <button class="back" (click)="ricarica()"><img src="assets/img/back.png"></button>
+    </div>
+
+    <div class="prodotto" *ngIf="prodotto_aggiunto != undefined && totale > 0 && !codiceNonTrovato; else prodottoNonTrovato">
+      <div class="row">
+<div class="column">
+      <div class="nome">{{prodotto_aggiunto.nome}}</div><div class="prz"> {{prodotto_aggiunto.prezzo}} €<br></div>
+     <div class="desc"> {{prodotto_aggiunto.descrizione}}<br></div>
+      
+      <br>
+</div>
+<div class="column">
+  <div class="immagine">
+      <img [src]="prodotto_aggiunto.nome_immagine"/>
+ </div>
+ </div>   
+
+</div>
+    </div>
+    <ng-template #prodottoNonTrovato>
+      <div *ngIf="!codiceNonTrovato">
+      <div class="scan"><a href="http://localhost:4200/"> <img src="assets/img/scan.png"></a></div>
+       </div>
+    </ng-template>
+  </div>
+</div>
+
+<ng-template class="paga"  #pagaSpesa>
+    <div class="spesapagata">
+<span class="pagato">Hai pagato: </span> <span class="totalespesa">{{totale | number: '1.0-2'}} €</span>
+
+  <button class="nuova" (click)="nuova_spesa()"><img src="assets/img/nuova.png"></button>
+  </div>
+</ng-template>
+
+<div class="spesa" *ngIf="totale > 0" >
+  <span class="titolo_s">La tua Spesa</span>
+<hr>
+        <div class="row">
+          <div class="column">
+  <ul class="elenco">
+    <li class="singolo" *ngFor="let prodotto of carrello">
+      <button class="rimuovi" *ngIf="!paga_spesa" (click)="remove(prodotto.id)"><img src="assets/img/rimuovi.png"></button> <span class="nome_p">{{prodotto.nome}}</span> <span class="prezzo_p"> {{prodotto.prezzo}} €</span>
+    </li>
+  </ul>
+</div>
+<div class="column">
+  <div class="totale">
+    Totale: {{totale | number: '1.0-2'}} €
+  </div>
+
+  <button class="paga" *ngIf="!paga_spesa" (click)="paga()"><img src="assets/img/paga.png"></button>
+     </div> 
+      </div>
+
+      </div>
+
+
+</body>
+
+
+
+

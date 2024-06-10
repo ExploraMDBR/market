@@ -1,0 +1,89 @@
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {Prodotto} from "./models/prodotto";
+import {HttpClient} from "@angular/common/http";
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent implements OnInit {
+
+  prodotto_selezionato: string = "";
+  prodotti_disponibili: Prodotto[] = [];
+  carrello: Prodotto[] = [];
+  totale: number = 0;
+  prodotto_aggiunto?: Prodotto = undefined;
+  paga_spesa: boolean = false;
+  codiceNonTrovato: Boolean = false;
+
+  constructor(private httpClient: HttpClient) {
+  }
+
+  ngOnInit(): void {
+    this.httpClient.get<Prodotto[]>('assets/data/data.json').subscribe((res) => {
+      this.prodotti_disponibili = res;
+    });
+
+    console.log(this.prodotti_disponibili);
+  }
+
+  addCarrello(id_prodotto: string): void {
+    let index_prodotto = this.prodotti_disponibili.map(function(p) { return p.id; }).indexOf(id_prodotto);
+
+    if(index_prodotto >= 0) {
+      this.prodotto_aggiunto = this.prodotti_disponibili[index_prodotto];
+      this.carrello.push(this.prodotto_aggiunto);
+      this.totale += this.prodotto_aggiunto.prezzo;
+      this.prodotto_selezionato = "";
+    }
+    else {
+      this.codiceNonTrovato = true;
+    }
+  }
+
+  remove(id_prodotto: string): void {
+    let index_prodotto = this.carrello.map(function(p) { return p.id; }).indexOf(id_prodotto);
+
+    if (index_prodotto >= 0) {
+      let prodotto_rimosso = this.carrello[index_prodotto];
+      this.carrello.splice(index_prodotto, 1);
+      this.totale -= prodotto_rimosso.prezzo;
+    }
+  }
+
+  onChangeProdotto(){
+    console.log(this.prodotto_selezionato);
+    if(this.prodotto_selezionato.length == 13) {
+      this.addCarrello(this.prodotto_selezionato);
+    }
+  }
+
+  paga() {
+    this.paga_spesa = true;
+  }
+
+  nuova_spesa() {
+    this.carrello = [];
+    this.totale = 0;
+    this.prodotto_aggiunto = undefined;
+    this.paga_spesa = false;
+    this.prodotto_selezionato = "";
+    this.codiceNonTrovato = false;
+  }
+
+  ricarica () {
+  window.location.reload();
+  }
+
+  @ViewChild('input', { static: false })
+  set input(element: ElementRef<HTMLInputElement>) {
+    if(element) {
+      element.nativeElement.focus()
+    }
+  }
+
+  tornaAllaSpesa() {
+    this.codiceNonTrovato = false;
+  }
+}

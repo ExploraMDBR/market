@@ -1,0 +1,211 @@
+/* You can add global styles to this file, and also import other style files */
+@font-face {
+  font-family: Gotham;
+  src: url(GothamMedium_1.ttf);
+}
+@font-face {
+  font-family: Gotham_bold;
+  src: url(Gotham-Bold.otf);
+  font-weight: bold;
+}
+
+body {
+	background-color:#fdf5e5;
+    overflow-y: hidden;
+}
+
+div {
+  font-family: Gotham;
+}
+h1 {font-family: Gotham_Bold;}
+
+.row {
+  display: flex;
+}
+
+.column {
+  flex: 50%;
+}
+
+.testata img{
+    width: 25%;
+}
+.immagine {
+	
+    text-align: center;
+    height: max-content;
+}
+.immagine img {
+	width: 30%;
+	}
+
+.schedaprodotto {
+    
+    padding: 40px;
+}
+
+.desc {
+font-size: 36px;
+    width: 80%;
+    padding: 20px;
+  /*  background-color: #f3f3f3;*/
+    border-radius: 10px;
+    margin-top: 14px;
+}
+
+.prz {
+font-size: 38px;
+    max-width: 110px;
+    background-color: #ffc107;
+    text-align: center;
+    margin: auto;
+    border-radius: 20px;
+  /*  margin-left: 20%;*/
+}
+.titolo_s {
+	font-size: 40px;
+    margin: 0 auto;
+    padding-left: 41px;
+
+}
+.singolo {
+
+}
+.totale {
+font-size: 40px;
+    float: left;
+    font-weight: 700;
+
+}
+.paga {
+background-color: #fdf5e5;
+    border: none;
+    width: fit-content;
+    text-align: left;
+    vertical-align: middle;
+}
+.paga img {
+    width: 200px;
+    vertical-align: middle;
+    margin-left: 50px;
+    position: fixed;
+}
+.spesapagata {
+	width: 80%;
+	margin: 0 auto;
+	text-align: center;
+}
+.nuova img {
+    width: 60%;
+}
+.nuova {
+	background-color: #fdf5e5;
+    border: none;
+}
+.pagato {
+margin-left: 20px;
+    font-size: 36px;
+    background-color: #662ba1;
+    color: white;
+    padding: 14px;
+    text-transform: uppercase;
+}
+.totalespesa {
+color: black;
+    font-weight: bold;
+    background-color: #e8f752;
+    font-size: 42px;
+    margin: 20px;
+    padding: 10px;
+    border-radius: 27px;
+
+}
+.elenco {
+list-style: none;
+   
+    padding: 20px;
+
+    max-width: 880px;
+}
+.nome_p {
+    font-size: 40px;
+    color: #161616;
+}
+.prezzo_p {
+    margin-left: 16px;
+    font-size: 36px;
+    background-color: #ffc107;
+    color: #161616;
+    padding: 4px;
+    border-radius: 12px;
+}
+
+.rimuovi {
+border: none;
+    background-color: #fdf5e5;
+    vertical-align: middle;
+    text-align: left;
+    max-width: 250px;
+
+}
+.rimuovi img {
+    width: 60%;
+}
+.back {
+    background: none;
+    border: none;
+}
+.back img {
+    width: 200px;
+    vertical-align: middle;
+}
+
+.nome {
+    font-size: 36px;
+    color: #2a2626;
+    margin: auto;
+    float: left;
+    max-width: 380px;
+}
+.scan {
+    text-align: center;
+}
+.scan img {
+    max-width: 80%;
+
+}
+
+.corpo {
+
+    min-height: 1065px;
+}
+
+.titolone {
+	margin: auto;
+    width: 80%;
+    text-align: center;
+    font-size: 90px;
+    background-color: #ffec48;
+    color: #536e53;
+    border-radius: 20px;
+    padding: 50px;
+}
+
+.immissione {
+    margin: 50px;
+    width: 200px;
+    border: none;
+    background-color: #f3f3f3;
+    height: 30px;
+    position: absolute;
+    top: -400px;
+}
+.prodotto
+{
+
+}
+
+.singolo {
+height: fit-content;
+    padding: 3px;
+}
