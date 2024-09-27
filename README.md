@@ -1,5 +1,3 @@
-This project emulate a cash machine in a real supermarket, it is a role game for childrens.
-
 # CassaSupermercato
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.0.4.
